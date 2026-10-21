@@ -1,0 +1,104 @@
+{
+  "$schema": "../schema.json",
+  "meta": { "title": "Valentina Ríos — Chef ejecutiva", "description": "Cocina de temporada, gestión de equipos y costos." },
+  "locales": ["es"],
+  "brand": { "name": "Valentina Ríos", "mark": "." },
+  "theme": { "preset": "paper", "radius": 6, "mode": "light" },
+  "features": { "buddy": true, "inspector": true, "admin": true, "tagFilter": true },
+  "sections": [
+    {
+      "type": "hero",
+      "id": "inicio",
+      "eyebrow": "Chef ejecutiva · Valparaíso",
+      "headline": ["Valentina", "Ríos"],
+      "intro": "Cocina de temporada con producto local. Diseño cartas rentables y formo equipos que sostienen el servicio en noches de 200 cubiertos.",
+      "actions": [
+        { "label": "Reservar una asesoría", "href": "mailto:hola@ejemplo.cl", "variant": "primary" },
+        { "label": "Instagram", "href": "https://instagram.com", "variant": "ghost" }
+      ],
+      "aside": {
+        "kind": "stats",
+        "items": [
+          { "value": "12", "label": "años en cocina" },
+          { "value": "28%", "label": "food cost promedio" },
+          { "value": "3", "label": "aperturas lideradas" },
+          { "value": "18", "label": "personas a cargo" }
+        ]
+      }
+    },
+    {
+      "type": "projects",
+      "id": "trabajos",
+      "nav": "Trabajos",
+      "title": "Trabajos destacados",
+      "items": [
+        {
+          "title": "Carta de invierno · Mar Adentro",
+          "period": "2025",
+          "description": "Rediseño completo de carta con 70% de producto regional y fichas técnicas estandarizadas.",
+          "highlights": ["Food cost de 34% a 27% en tres meses.", "Fichas técnicas y escandallos para 42 preparaciones."],
+          "stats": [
+            { "value": "−7 pts", "label": "food cost" },
+            { "value": "42", "label": "fichas técnicas" }
+          ],
+          "tags": ["Costeo", "Fichas técnicas", "Producto local", "Menú de temporada"],
+          "media": { "type": "image", "src": "/examples/plato.svg", "alt": "Ilustración de un plato" }
+        },
+        {
+          "featured": false,
+          "kicker": "Apertura",
+          "period": "2023",
+          "title": "Bistró Cerro Alegre",
+          "description": "Puesta en marcha de cocina: layout, proveedores, contratación y capacitación de 9 personas.",
+          "tags": ["Liderazgo", "Proveedores", "Capacitación"]
+        },
+        {
+          "featured": false,
+          "kicker": "Eventos",
+          "period": "2022 — hoy",
+          "title": "Catering corporativo",
+          "description": "Banquetes de hasta 400 personas con planificación de mise en place y logística en frío.",
+          "tags": ["Banquetería", "Logística", "Costeo"]
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "id": "habilidades",
+      "nav": "Habilidades",
+      "title": "Habilidades",
+      "groups": [
+        { "title": "Cocina", "items": ["Menú de temporada", "Producto local", "Pastelería", "Fermentados"] },
+        { "title": "Gestión", "items": ["Costeo", "Fichas técnicas", "Proveedores", "Logística"] },
+        { "title": "Equipo", "items": ["Liderazgo", "Capacitación", "Banquetería"] }
+      ]
+    },
+    {
+      "type": "gallery",
+      "id": "galeria",
+      "nav": "Galería",
+      "title": "Galería",
+      "items": [
+        { "src": "/examples/plato.svg", "caption": "Merluza austral, pil pil de cochayuyo" },
+        { "src": "/examples/composicion.svg", "caption": "Postre de murta y miel de ulmo" },
+        { "src": "/examples/retrato.svg", "caption": "Equipo de cocina, temporada 2025" }
+      ]
+    },
+    {
+      "type": "timeline",
+      "id": "trayectoria",
+      "nav": "Trayectoria",
+      "title": "Trayectoria",
+      "items": [
+        { "period": "2023 — hoy", "title": "Mar Adentro", "subtitle": "Chef ejecutiva", "description": "Cocina de 18 personas en dos turnos.", "tags": ["Liderazgo", "Costeo", "Menú de temporada"] },
+        { "period": "2019 — 2023", "title": "Bistró Cerro Alegre", "subtitle": "Sous chef", "description": "Apertura y operación diaria.", "tags": ["Proveedores", "Capacitación"] }
+      ]
+    },
+    {
+      "type": "contact",
+      "id": "contacto",
+      "headline": "¿Cocinamos algo?",
+      "lines": [{ "label": "hola@ejemplo.cl", "href": "mailto:hola@ejemplo.cl" }, { "label": "Valparaíso, Chile" }]
+    }
+  ]
+}

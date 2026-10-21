@@ -1,0 +1,84 @@
+name: Deploy
+
+# Publica el sitio en GitHub Pages.
+#  - push a main: despliega el código.
+#  - workflow_dispatch: lo lanza el panel /admin después de guardar contenido en el repo de contenido.
+# Activa Pages una vez: Settings › Pages › Source: "GitHub Actions".
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Opcional. Si defines la variable CONTENT_REPOSITORY (owner/repo), el contenido y las imágenes se
+      # leen de ese repo (p. ej. uno privado) y este repo no lleva datos personales.
+      # Ver README › "Contenido privado".
+      CONTENT_REPOSITORY: ${{ vars.CONTENT_REPOSITORY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Descargar el contenido privado
+        if: ${{ env.CONTENT_REPOSITORY != '' }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.CONTENT_REPOSITORY }}
+          # Deploy key de solo lectura, guardada como secreto CONTENT_DEPLOY_KEY.
+          ssh-key: ${{ secrets.CONTENT_DEPLOY_KEY }}
+          path: .content
+          persist-credentials: false
+
+      - name: Usar el contenido privado
+        if: ${{ env.CONTENT_REPOSITORY != '' }}
+        run: |
+          if [ ! -f .content/content/site.json ]; then
+            echo "::error::No se encontró content/site.json en el repositorio de contenido."
+            exit 1
+          fi
+          if [ -d .content/public ]; then cp -r .content/public/. public/; fi
+          echo "CONTENT_DIR=$GITHUB_WORKSPACE/.content" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_CONTENT_REPOSITORY=$CONTENT_REPOSITORY" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - name: Validar contenido y tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+        env:
+          # Repos <usuario>.github.io se sirven en la raíz; el resto en /<repo>.
+          NEXT_PUBLIC_BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '' || format('/{0}', github.event.repository.name) }}
+          # El panel y los enlaces de descarga apuntan solos al repo donde corre (forks incluidos).
+          NEXT_PUBLIC_GITHUB_REPOSITORY: ${{ github.repository }}
+          NEXT_PUBLIC_GITHUB_BRANCH: ${{ github.ref_name }}
+
+      - run: touch out/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

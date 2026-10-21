@@ -1,0 +1,89 @@
+{
+  "$schema": "../schema.json",
+  "meta": { "title": "Lucía Méndez — Product Designer", "description": { "es": "Diseño de producto y sistemas de diseño.", "en": "Product design and design systems." } },
+  "locales": ["en", "es"],
+  "brand": { "name": "Lucía Méndez", "mark": "_" },
+  "theme": { "preset": "midnight", "mode": "dark", "radius": 12 },
+  "features": { "buddy": false, "inspector": true, "admin": true, "tagFilter": true },
+  "sections": [
+    {
+      "type": "hero",
+      "id": "home",
+      "eyebrow": { "en": "Product Designer · Remote", "es": "Diseñadora de producto · Remoto" },
+      "headline": ["Lucía", "Méndez"],
+      "intro": {
+        "en": "I design calm interfaces for complex products, and the design systems that keep them consistent.",
+        "es": "Diseño interfaces tranquilas para productos complejos, y los sistemas de diseño que las mantienen coherentes."
+      },
+      "actions": [
+        { "label": { "en": "Get in touch", "es": "Contactar" }, "href": "mailto:lucia@example.com", "variant": "primary" },
+        { "label": "Dribbble", "href": "https://dribbble.com", "variant": "ghost" }
+      ],
+      "aside": { "kind": "image", "src": "/examples/retrato.svg", "alt": { "en": "Illustrated portrait", "es": "Retrato ilustrado" } }
+    },
+    {
+      "type": "gallery",
+      "id": "work",
+      "nav": { "en": "Work", "es": "Trabajo" },
+      "title": { "en": "Selected work", "es": "Trabajo seleccionado" },
+      "items": [
+        { "src": "/examples/composicion.svg", "caption": { "en": "Fintech onboarding — 2025", "es": "Onboarding fintech — 2025" } },
+        { "src": "/examples/plato.svg", "caption": { "en": "Recipe app — 2024", "es": "App de recetas — 2024" } },
+        { "src": "/examples/retrato.svg", "caption": { "en": "Brand system — 2023", "es": "Sistema de marca — 2023" } }
+      ]
+    },
+    {
+      "type": "projects",
+      "id": "cases",
+      "nav": { "en": "Case studies", "es": "Casos" },
+      "title": { "en": "Case studies", "es": "Casos de estudio" },
+      "items": [
+        {
+          "title": "Atlas Design System",
+          "period": "2024 —",
+          "description": {
+            "en": "120 components across web and mobile, with tokens shared between Figma and code.",
+            "es": "120 componentes para web y móvil, con tokens compartidos entre Figma y código."
+          },
+          "stats": [
+            { "value": "120", "label": { "en": "components", "es": "componentes" } },
+            { "value": "−40%", "label": { "en": "UI review time", "es": "tiempo de revisión UI" } }
+          ],
+          "tags": ["Figma", "Design tokens", "Accessibility", "Storybook"],
+          "media": {
+            "type": "code",
+            "filename": "tokens.json",
+            "language": "json",
+            "code": "{\n  \"color\": {\n    \"accent\": { \"value\": \"#7ee787\" },\n    \"surface\": { \"value\": \"#161b22\" }\n  },\n  \"radius\": { \"md\": { \"value\": 12 } }\n}"
+          }
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "id": "tools",
+      "title": { "en": "Toolkit", "es": "Herramientas" },
+      "groups": [
+        { "title": { "en": "Design", "es": "Diseño" }, "items": ["Figma", "Prototyping", "Design tokens"] },
+        { "title": { "en": "Research", "es": "Investigación" }, "items": ["Usability testing", "Interviews", "Accessibility"] },
+        { "title": { "en": "Handoff", "es": "Entrega" }, "items": ["Storybook", "HTML/CSS"] }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "approach",
+      "nav": { "en": "Approach", "es": "Enfoque" },
+      "title": { "en": "Approach", "es": "Enfoque" },
+      "body": {
+        "en": ["I start from the riskiest assumption and test it with the cheapest prototype that can fail.", "Every pattern I ship gets documented, so the next team does not need me in the room."],
+        "es": ["Empiezo por la suposición más riesgosa y la pruebo con el prototipo más barato que pueda fallar.", "Cada patrón que entrego queda documentado, para que el siguiente equipo no me necesite en la sala."]
+      }
+    },
+    {
+      "type": "contact",
+      "id": "contact",
+      "headline": { "en": "Say hi.", "es": "Hablemos." },
+      "lines": [{ "label": "lucia@example.com", "href": "mailto:lucia@example.com" }]
+    }
+  ]
+}

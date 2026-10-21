@@ -1,0 +1,261 @@
+{
+  "$schema": "../schema.json",
+  "meta": {
+    "title": "Camila Torres — Desarrolladora Full Stack",
+    "description": {
+      "es": "Portafolio de ejemplo de una desarrolladora Full Stack: proyectos, stack, experiencia y certificaciones.",
+      "en": "Sample portfolio of a Full Stack developer: projects, stack, experience and certifications."
+    }
+  },
+  "locales": ["es", "en"],
+  "brand": { "name": "Camila Torres", "mark": "." },
+  "repo": { "url": "https://github.com/usuario/portafolio", "branch": "main" },
+  "theme": { "preset": "modernist", "radius": 0, "mode": "light" },
+  "features": { "buddy": true, "inspector": true, "admin": true, "tagFilter": true },
+  "sections": [
+    {
+      "type": "hero",
+      "id": "inicio",
+      "eyebrow": { "es": "Desarrolladora Full Stack · Valparaíso", "en": "Full Stack Developer · Valparaíso" },
+      "headline": ["Camila", "Torres"],
+      "intro": {
+        "es": "Construyo aplicaciones web de punta a punta: desde la base de datos hasta la interfaz, con pruebas y despliegue automático.",
+        "en": "I build web applications end to end: from the database to the interface, with tests and automated deployment."
+      },
+      "meta": {
+        "es": "Contenido de ejemplo. Reemplázalo desde el panel (/admin) o editando content/site.json.",
+        "en": "Sample content. Replace it from the panel (/admin) or by editing content/site.json."
+      },
+      "actions": [
+        { "label": { "es": "Escríbeme", "en": "Email me" }, "href": "mailto:hola@ejemplo.com", "variant": "primary" },
+        { "label": { "es": "Descargar CV", "en": "Download CV" }, "href": "/examples/cv-ejemplo.pdf", "variant": "secondary" },
+        { "label": "GitHub", "href": "https://github.com", "variant": "ghost" }
+      ],
+      "aside": {
+        "kind": "stats",
+        "items": [
+          { "value": "120", "label": { "es": "tests automatizados", "en": "automated tests" } },
+          { "value": "3", "label": { "es": "proyectos en producción", "en": "projects in production" } },
+          { "value": "5", "label": { "es": "años programando", "en": "years coding" } },
+          { "value": "2", "label": { "es": "idiomas", "en": "languages" } }
+        ]
+      }
+    },
+    {
+      "type": "projects",
+      "id": "proyectos",
+      "nav": { "es": "Proyectos", "en": "Projects" },
+      "title": { "es": "Proyectos", "en": "Projects" },
+      "items": [
+        {
+          "title": "Tienda de barrio",
+          "period": "2025 —",
+          "description": {
+            "es": "Tienda online con catálogo, carrito, pagos y un panel para administrar productos y pedidos.",
+            "en": "Online store with catalog, cart, payments and a panel to manage products and orders."
+          },
+          "highlights": {
+            "es": ["Pagos confirmados por webhook firmado.", "Inventario en tiempo real con PostgreSQL y políticas RLS.", "Despliegue automático en cada cambio."],
+            "en": ["Payments confirmed by signed webhook.", "Real-time inventory with PostgreSQL and RLS policies.", "Automatic deploy on every change."]
+          },
+          "stats": [
+            { "value": "40", "label": { "es": "páginas", "en": "pages" } },
+            { "value": "55", "label": { "es": "rutas de API", "en": "API routes" } },
+            { "value": "80", "label": { "es": "tests", "en": "tests" } }
+          ],
+          "tags": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Vitest", "Vercel"],
+          "links": [{ "label": { "es": "Ver sitio", "en": "Visit site" }, "href": "https://example.com", "variant": "secondary" }],
+          "media": { "type": "image", "src": "/examples/composicion.svg", "alt": { "es": "Ilustración del proyecto", "en": "Project illustration" } }
+        },
+        {
+          "title": { "es": "App de reservas", "en": "Booking app" },
+          "period": "2024",
+          "description": {
+            "es": "Aplicación para reservar horas que funciona sin conexión y se sincroniza al volver internet.",
+            "en": "Appointment booking app that works offline and syncs when the connection returns."
+          },
+          "highlights": {
+            "es": ["Cola de escrituras en IndexedDB con reintentos.", "Pruebas de punta a punta con Playwright."],
+            "en": ["IndexedDB write queue with retries.", "End-to-end tests with Playwright."]
+          },
+          "tags": ["React", "TypeScript", "IndexedDB", "PWA", "Playwright", "GitHub Actions"],
+          "links": [{ "label": { "es": "Ver código", "en": "View code" }, "href": "https://github.com", "variant": "secondary" }],
+          "media": {
+            "type": "code",
+            "filename": "src/offline/queue.ts",
+            "language": "ts",
+            "code": "// Las escrituras se encolan y se reintentan al volver la conexión\nexport async function enqueue(op: Operation) {\n  await db.outbox.add({ ...op, status: 'pending', attempts: 0 });\n}\n\nexport async function flush() {\n  for (const op of await db.outbox.orderBy('createdAt').toArray()) {\n    const ok = await send(op).then(() => true, () => false);\n    if (ok) await db.outbox.delete(op.id);\n  }\n}"
+          }
+        },
+        {
+          "title": { "es": "Este portafolio", "en": "This portfolio" },
+          "period": "2026",
+          "description": {
+            "es": "Un portafolio editable desde un panel con GitHub: todo el contenido vive en un archivo validado con Zod.",
+            "en": "A portfolio editable from a GitHub-powered panel: all content lives in one Zod-validated file."
+          },
+          "highlights": {
+            "es": ["Secciones modulares que se ordenan y ocultan.", "Tests con Vitest y Playwright; despliegue con GitHub Actions."],
+            "en": ["Modular sections you can reorder and hide.", "Vitest and Playwright tests; deployed with GitHub Actions."]
+          },
+          "tags": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Zod", "Vitest", "Playwright", "GitHub Actions"],
+          "links": [{ "label": { "es": "Ver código", "en": "View code" }, "href": "https://github.com", "variant": "secondary" }],
+          "media": {
+            "type": "code",
+            "filename": "content/site.json",
+            "language": "json",
+            "code": "{\n  \"locales\": [\"es\", \"en\"],\n  \"theme\": { \"preset\": \"modernist\" },\n  \"sections\": [\n    { \"type\": \"hero\", \"id\": \"inicio\", \"headline\": [\"Camila\", \"Torres\"] },\n    { \"type\": \"projects\", \"id\": \"proyectos\", \"items\": [ … ] }\n  ]\n}"
+          }
+        },
+        {
+          "featured": false,
+          "kicker": { "es": "Herramienta", "en": "Tool" },
+          "period": "2023",
+          "title": { "es": "Calculadora de costos", "en": "Cost calculator" },
+          "description": {
+            "es": "Calculadora web para estimar costos y márgenes de un pedido.",
+            "en": "Web calculator to estimate the cost and margin of an order."
+          },
+          "tags": ["JavaScript", "HTML5", "CSS3"],
+          "links": [{ "label": { "es": "Abrir", "en": "Open" }, "href": "https://example.com", "variant": "secondary" }]
+        },
+        {
+          "featured": false,
+          "kicker": "Freelance",
+          "period": "2024",
+          "title": { "es": "Sitio para una pizzería", "en": "Pizzeria website" },
+          "description": {
+            "es": "Sitio de pedidos con React, Vite y Supabase.",
+            "en": "Ordering site with React, Vite and Supabase."
+          },
+          "tags": ["React", "Vite", "Supabase", "Playwright"]
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "id": "stack",
+      "nav": "Stack",
+      "title": { "es": "Stack técnico", "en": "Tech stack" },
+      "groups": [
+        { "title": { "es": "Lenguajes", "en": "Languages" }, "items": ["JavaScript ES6+", "TypeScript", "SQL", "HTML5", "CSS3"] },
+        { "title": "Frontend", "items": ["React", "Next.js (App Router)", "Tailwind CSS", "Zod", "Vite", "PWA"] },
+        { "title": { "es": "Backend y datos", "en": "Backend & data" }, "items": ["Node.js", "REST APIs", "PostgreSQL", "Supabase (Auth, RLS)"] },
+        { "title": { "es": "Testing y DevOps", "en": "Testing & DevOps" }, "items": ["Vitest", "Playwright", "Git", "GitHub Actions (CI/CD)", "Vercel"] }
+      ]
+    },
+    {
+      "type": "timeline",
+      "id": "experiencia",
+      "nav": { "es": "Experiencia", "en": "Experience" },
+      "title": { "es": "Experiencia", "en": "Experience" },
+      "items": [
+        {
+          "period": { "es": "2024 — hoy", "en": "2024 — now" },
+          "title": "Estudio Ejemplo",
+          "subtitle": { "es": "Desarrolladora Full Stack", "en": "Full Stack Developer" },
+          "description": {
+            "es": "Desarrollo de aplicaciones web para clientes: de la base de datos a la interfaz, con pruebas y despliegue automático.",
+            "en": "Web applications for clients: from the database to the interface, with tests and automated deployment."
+          },
+          "tags": ["Next.js", "React", "TypeScript", "Supabase", "Vitest", "GitHub Actions"]
+        },
+        {
+          "period": "2022 — 2024",
+          "title": "Agencia Ejemplo",
+          "subtitle": { "es": "Desarrolladora Frontend", "en": "Frontend Developer" },
+          "description": {
+            "es": "Sitios y tiendas online con React y Tailwind CSS.",
+            "en": "Websites and online stores with React and Tailwind CSS."
+          },
+          "tags": ["React", "Tailwind CSS", "Vite"]
+        }
+      ]
+    },
+    {
+      "type": "credentials",
+      "id": "certificaciones",
+      "nav": { "es": "Certificaciones", "en": "Certifications" },
+      "title": { "es": "Certificaciones", "en": "Certifications" },
+      "highlights": [
+        {
+          "kicker": { "es": "Carrera · Academia Ejemplo", "en": "Program · Example Academy" },
+          "title": { "es": "Desarrolladora Full Stack JavaScript", "en": "Full Stack JavaScript Developer" },
+          "value": "440 h",
+          "date": "2025-05-08",
+          "href": "/examples/certificado-1.svg"
+        },
+        {
+          "kicker": { "es": "Carrera · Academia Ejemplo", "en": "Program · Example Academy" },
+          "title": { "es": "Desarrolladora Front End con React", "en": "Front End Developer with React" },
+          "value": "244 h",
+          "date": "2024-12-16",
+          "href": "/examples/certificado-2.svg"
+        }
+      ],
+      "listTitle": { "es": "Módulos aprobados", "en": "Completed modules" },
+      "items": [
+        { "title": "SQL", "value": "46 h", "date": "2025-04-01", "href": "/examples/certificado-1.svg" },
+        { "title": { "es": "Backend con Node y Express", "en": "Backend with Node and Express" }, "value": "70 h", "date": "2025-03-20", "href": "/examples/certificado-2.svg" },
+        { "title": "React", "value": "86 h", "date": "2024-12-16" }
+      ]
+    },
+    {
+      "type": "about",
+      "id": "sobre",
+      "nav": { "es": "Sobre mí", "en": "About" },
+      "title": { "es": "Sobre mí", "en": "About" },
+      "statement": {
+        "es": "Me gusta que el software sea claro de usar y fácil de mantener: pocas piezas, bien probadas y bien documentadas.",
+        "en": "I like software that is clear to use and easy to maintain: few pieces, well tested and well documented."
+      },
+      "facts": [
+        { "label": { "es": "Idiomas", "en": "Languages" }, "value": { "es": "Español nativo · Inglés intermedio", "en": "Native Spanish · Intermediate English" } },
+        { "label": { "es": "Disponibilidad", "en": "Availability" }, "value": { "es": "Valparaíso · presencial, híbrido o remoto", "en": "Valparaíso · on-site, hybrid or remote" } }
+      ]
+    },
+    {
+      "type": "download",
+      "id": "descargar",
+      "nav": { "es": "Descargar", "en": "Download" },
+      "title": { "es": "Descargar", "en": "Download" },
+      "intro": {
+        "es": "El portafolio es de código abierto: puedes llevarte el CV, el proyecto completo o usarlo como plantilla.",
+        "en": "The portfolio is open source: take the CV, the whole project, or use it as a template."
+      },
+      "items": [
+        {
+          "kind": "file",
+          "label": { "es": "Currículum (PDF)", "en": "Résumé (PDF)" },
+          "description": { "es": "CV de ejemplo.", "en": "Sample CV." },
+          "href": "/examples/cv-ejemplo.pdf"
+        },
+        {
+          "kind": "zip",
+          "label": { "es": "Código del portafolio", "en": "Portfolio source code" },
+          "description": { "es": "Todo el proyecto en un .zip: contenido, componentes, panel y tests.", "en": "The whole project in a .zip: content, components, panel and tests." }
+        },
+        {
+          "kind": "template",
+          "label": { "es": "Usar como plantilla", "en": "Use as a template" },
+          "description": { "es": "Crea tu propio portafolio en tu cuenta de GitHub a partir de este repositorio.", "en": "Create your own portfolio in your GitHub account from this repository." }
+        },
+        {
+          "kind": "print",
+          "label": { "es": "Esta página en PDF", "en": "This page as PDF" },
+          "description": { "es": "Guarda el portafolio completo como PDF desde tu navegador.", "en": "Save the whole portfolio as a PDF from your browser." }
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "id": "contacto",
+      "headline": { "es": "¿Hablamos?", "en": "Let’s talk." },
+      "lines": [
+        { "label": "hola@ejemplo.com", "href": "mailto:hola@ejemplo.com" },
+        { "label": "github.com/usuario", "href": "https://github.com" },
+        { "label": "Valparaíso, Chile" }
+      ]
+    }
+  ]
+}

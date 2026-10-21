@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+/* Los colores y fuentes salen del tema (src/core/theme.ts) como variables --fk-*.
+   Aquí se exponen a Tailwind: bg-bg, text-fg, border-line, text-accent, font-heading… */
+@theme inline {
+  --color-bg: var(--fk-bg);
+  --color-surface: var(--fk-surface);
+  --color-fg: var(--fk-text);
+  --color-accent: var(--fk-accent);
+  --color-accent-ink: var(--fk-accent-ink);
+  --color-kicker: var(--fk-kicker);
+  --color-line: var(--fk-line);
+  --color-muted: var(--fk-muted);
+  --font-heading: var(--fk-font-heading);
+  --font-body: var(--fk-font-body);
+  --font-code: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-fk: var(--fk-radius);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+body {
+  margin: 0;
+}
+
+.fk-root {
+  font-size: 15px;
+  line-height: 1.55;
+  text-wrap: pretty;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
+}
+.fk-root h1,
+.fk-root h2,
+.fk-root h3 {
+  line-height: 1.12;
+}
+.fk-root ::selection {
+  background: color-mix(in srgb, var(--fk-accent) 30%, transparent);
+}
+.fk-root :focus-visible {
+  outline: 2px solid var(--fk-accent);
+  outline-offset: 2px;
+}
+
+.fk-grayscale {
+  filter: grayscale(1) contrast(1.08);
+  transition: filter 0.4s;
+}
+.fk-grayscale:hover {
+  filter: none;
+}
+
+.tok-comment {
+  color: var(--fk-muted);
+  font-style: italic;
+}
+.tok-string {
+  color: var(--fk-kicker);
+}
+.tok-key {
+  color: var(--fk-text);
+  font-weight: 600;
+}
+.tok-number,
+.tok-keyword {
+  color: var(--fk-accent);
+}

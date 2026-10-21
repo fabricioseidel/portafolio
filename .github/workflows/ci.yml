@@ -1,0 +1,30 @@
+name: CI
+
+# Revisión completa en cada pull request. Los commits de contenido del panel van directo a main
+# y los valida el workflow de despliegue (tests + build).
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Tipos
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Tests (Vitest)
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Tests end-to-end (Playwright)
+        run: |
+          npx playwright install --with-deps chromium
+          npm run e2e

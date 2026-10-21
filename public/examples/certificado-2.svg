@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780">
+<rect width="1100" height="780" fill="#f8f4f4"/><rect x="30" y="30" width="1040" height="720" fill="none" stroke="#201e1d" stroke-width="4"/>
+<rect x="46" y="46" width="1008" height="688" fill="none" stroke="#ec3013" stroke-width="2"/>
+<text x="550" y="170" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="30" fill="#201e1d" letter-spacing="6">ACADEMIA EJEMPLO</text>
+<text x="550" y="270" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="64" fill="#201e1d">Certificado de aprobación</text>
+<text x="550" y="350" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="26" fill="#605d5d">certifica a</text>
+<text x="550" y="440" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="60" fill="#ec3013">Camila Torres</text>
+<text x="550" y="520" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="26" fill="#605d5d">por haber finalizado</text>
+<text x="550" y="580" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="40" fill="#201e1d">Desarrolladora Front End con React</text>
+<text x="550" y="635" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="26" fill="#605d5d">244 horas · Certificado de ejemplo N° 0002</text>
+</svg>
