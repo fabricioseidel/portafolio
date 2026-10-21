@@ -484,7 +484,7 @@ export function AdminApp() {
           <Banner tone={status.deploy.state === 'failure' || status.warning ? 'warn' : 'ok'}>
             <span>
               {status.warning}
-              {!status.warning && status.deploy.state === 'success' && 'Publicado: el sitio ya muestra los cambios.'}
+              {!status.warning && status.deploy.state === 'success' && 'Publicado. GitHub Pages puede tardar hasta un minuto más en mostrar los cambios.'}
               {!status.warning && status.deploy.state === 'failure' && 'El cambio se guardó, pero el despliegue falló. Revisa el detalle en GitHub Actions.'}
               {!status.warning &&
                 (status.deploy.state === 'unknown' || status.deploy.state === 'pending' || status.deploy.state === 'running') &&
